@@ -8,7 +8,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-@app.route('/api', methods = ['GET'])
+@app.route('/api', methods = ['POST'])
 
 def grayscale(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -80,7 +80,7 @@ def deskew(cvImage):
     return rotateImage(cvImage, -1.0 * angle)
 
 def backendhandling():
-    if(request.method == 'GET'):
+    if(request.method == 'POST'):
         d = {}
         image_file = request.files['image'] 
         image = cv2.imread(image_file)
